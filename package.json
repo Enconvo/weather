@@ -1,0 +1,124 @@
+{
+  "$schema": "https://enconvo.com/schemas/extension.json",
+  "name": "weather",
+  "version": "0.0.6",
+  "description": "Get Weather Information",
+  "title": "Weather",
+  "icon": "icon.png",
+  "author": "ysnows",
+  "license": "MIT",
+  "type": "module",
+  "categories": [
+    "Weather"
+  ],
+  "commands": [
+    {
+      "name": "current",
+      "title": "Current Weather",
+      "description": "Current Weather Of The City",
+      "icon": "icon.png",
+      "mode": "no-view",
+      "aiPlugin": true,
+      "preferences": [
+        {
+          "name": "city",
+          "description": "The default city",
+          "type": "textfield",
+          "required": false,
+          "title": "Default City",
+          "default": "Beijing"
+        },
+        {
+          "name": "responseLanguage",
+          "description": "The language used to force LLM to respond",
+          "type": "dropdown",
+          "required": false,
+          "title": "Response Language",
+          "default": "auto",
+          "data": [
+            {
+              "title": "auto",
+              "value": "auto"
+            },
+            {
+              "title": "中文简体",
+              "value": "zh-Hans"
+            },
+            {
+              "title": "中文繁体",
+              "value": "zh-Hant"
+            },
+            {
+              "title": "English",
+              "value": "en"
+            },
+            {
+              "title": "Japanese",
+              "value": "ja"
+            },
+            {
+              "title": "Korean",
+              "value": "ko"
+            },
+            {
+              "title": "French",
+              "value": "fr"
+            },
+            {
+              "title": "German",
+              "value": "de"
+            },
+            {
+              "title": "Spanish",
+              "value": "es"
+            }
+          ]
+        },
+        {
+          "name": "auto_audio_play",
+          "description": "Auto play result content",
+          "type": "checkbox",
+          "required": false,
+          "title": "Auto Audio Play",
+          "default": false
+        },
+        {
+          "name": "tts",
+          "description": "Auto play TTS Engine",
+          "required": false,
+          "title": "Auto play TTS Engine",
+          "default": "default",
+          "type": "extension"
+        },
+        {
+          "name": "llm",
+          "description": "The model used to generate responses",
+          "type": "extension",
+          "required": false,
+          "default": "default",
+          "title": "LLM Model"
+        }
+      ]
+    }
+  ],
+  "dependencies": {
+    "@enconvo/api": "^0.1.1",
+    "@langchain/core": "^0.1.52",
+    "axios": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.17.14",
+    "eslint": "^8.33.0",
+    "prettier": "^2.8.3",
+    "tsup": "^7.2.0",
+    "typescript": "^5.0.4"
+  },
+  "scripts": {
+    "lint": "eslint src",
+    "lint:fix": "npm run lint --fix",
+    "format": "prettier --write \"**/*.ts\"",
+    "format:check": "prettier --list-different \"**/*.ts\"",
+    "build": "enconvo",
+    "dev": "enconvo --dev"
+  }
+}
